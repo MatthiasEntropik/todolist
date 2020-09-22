@@ -6,17 +6,30 @@
       <v-icon v-else>mdi-dots-vertical</v-icon>
     </v-btn>
 
-    <v-toolbar-title class="hidden-sm-and-down font-weight-light" v-text="$route.name" />
+    <v-toolbar-title class="hidden-sm-and-down font-weight-light">
+      <v-icon color="success">mdi-alpha-d-box</v-icon>Distropic
+    </v-toolbar-title>
 
     <v-spacer />
 
-    <div class="mx-3" />
-
-    <v-btn class="ml-2" min-width="0" v-if="!isChecked"  text to="/login">
-      <v-icon>mdi-account</v-icon>Login
+    <v-btn class="ml-2 text-decoration-none" min-width="0" v-if="!isChecked" text to="/login">
+      <v-icon class="mr-5">mdi-account</v-icon>Se connecter
     </v-btn>
-    <v-btn class="ml-2" min-width="0" text to="/login" v-if="isChecked" @click="logout">
-      <v-icon>mdi-logout</v-icon>Logout
+
+    <!-- <v-btn color="success" class="text-decoration-none ml-5" icon to="/" v-if="isChecked">
+      <v-icon>mdi-account</v-icon>
+    </v-btn> -->
+
+    <v-btn
+      color="success"
+      class="text-decoration-none"
+      min-width="0"
+      icon
+      to="/login"
+      v-if="isChecked"
+      @click="logout"
+    >
+      <v-icon>mdi-logout</v-icon>
     </v-btn>
   </v-app-bar>
 </template>
@@ -71,15 +84,7 @@ export default {
   },
 
   data: () => ({
-    notifications: [
-      "Mike John Responded to your email",
-      "You have 5 new tasks",
-      "You're now friends with Andrew",
-      "Another Notification",
-      "Another one",
-    ],
-      currentUser: null,
-
+    currentUser: null,
   }),
 
   created() {

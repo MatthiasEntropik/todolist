@@ -2075,10 +2075,10 @@ __webpack_require__.r(__webpack_exports__);
   name: 'DashboardIndex',
   components: {
     CoreAppBar: function CoreAppBar() {
-      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../components/core/AppBar */ "./resources/js/dashboard/components/core/AppBar.vue"));
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../components/core/AppBar */ "./resources/js/dashboard/components/core/AppBar.vue"));
     },
     CoreDrawer: function CoreDrawer() {
-      return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../components/core/Drawer */ "./resources/js/dashboard/components/core/Drawer.vue"));
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../components/core/Drawer */ "./resources/js/dashboard/components/core/Drawer.vue"));
     }
   }
 });
@@ -2114,7 +2114,8 @@ __webpack_require__.r(__webpack_exports__);
       lazy: false,
       valid: true,
       loading: false,
-      returnUrl: ""
+      returnUrl: "",
+      erreur: ''
     };
   },
   created: function created() {
@@ -2130,7 +2131,13 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       _services_authentication_service__WEBPACK_IMPORTED_MODULE_0__["authenticationService"].login(this.user).then(function (user) {
-        _this.$router.push(_this.returnUrl);
+        if (user == undefined) {
+          _this.erreur = 'mot de passe ou email incorrect';
+        } else {
+          _this.erreur = '';
+
+          _this.$router.push(_this.returnUrl);
+        }
       }, function (error) {
         _this.loading = false;
       });
@@ -2154,8 +2161,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      currentUser: null
+      currentUser: null,
+      snackbar: false,
+      text: '',
+      timeout: 3000
     };
+  },
+  computed: {
+    isChecked: function isChecked() {
+      return this.currentUser;
+    }
   },
   created: function created() {
     var _this = this;
@@ -2163,6 +2178,16 @@ __webpack_require__.r(__webpack_exports__);
     _services_authentication_service__WEBPACK_IMPORTED_MODULE_0__["authenticationService"].currentUser.subscribe(function (x) {
       return _this.currentUser = x;
     });
+    this.snackCheck();
+  },
+  methods: {
+    snackCheck: function snackCheck() {
+      this.snackbar = true;
+
+      if (!_.isEmpty(this.currentUser)) {
+        this.text = 'vous êtes connecter';
+      }
+    }
   }
 });
 
@@ -44755,134 +44780,118 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-content",
+    "v-container",
+    { staticClass: "fill-height" },
     [
       _c(
-        "v-container",
-        { staticClass: "fill-height", attrs: { fluid: "" } },
+        "v-row",
+        { attrs: { align: "center", justify: "center" } },
         [
           _c(
-            "v-row",
-            { attrs: { align: "center", justify: "center" } },
+            "v-toolbar",
+            { attrs: { dark: "", flat: "" } },
+            [
+              _c("v-toolbar-title", [_vm._v("Identifiez-vous")]),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-text",
             [
               _c(
-                "v-col",
-                { attrs: { cols: "12", sm: "8", md: "4" } },
+                "v-form",
+                {
+                  ref: "form",
+                  attrs: { "lazy-validation": _vm.lazy },
+                  model: {
+                    value: _vm.valid,
+                    callback: function($$v) {
+                      _vm.valid = $$v
+                    },
+                    expression: "valid"
+                  }
+                },
                 [
-                  _c(
-                    "v-card",
-                    { staticClass: "elevation-12" },
-                    [
-                      _c(
-                        "v-toolbar",
-                        { attrs: { color: "success", dark: "", flat: "" } },
-                        [
-                          _c("v-toolbar-title", [_vm._v("Indentifiez-vous")]),
-                          _vm._v(" "),
-                          _c("v-spacer")
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-text",
-                        [
-                          _c(
-                            "v-form",
-                            {
-                              ref: "form",
-                              attrs: { "lazy-validation": _vm.lazy },
-                              model: {
-                                value: _vm.valid,
-                                callback: function($$v) {
-                                  _vm.valid = $$v
-                                },
-                                expression: "valid"
-                              }
-                            },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Email de connexion",
-                                  name: "login",
-                                  rules: _vm.emailRules,
-                                  "prepend-icon": "mdi-account",
-                                  type: "text"
-                                },
-                                model: {
-                                  value: _vm.user.email,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.user, "email", $$v)
-                                  },
-                                  expression: "user.email"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  id: "password",
-                                  label: "Mot de passe",
-                                  rules: _vm.pwdRules,
-                                  name: "password",
-                                  "prepend-icon": "mdi-lock",
-                                  type: "password"
-                                },
-                                on: {
-                                  keydown: function($event) {
-                                    if (
-                                      !$event.type.indexOf("key") &&
-                                      _vm._k(
-                                        $event.keyCode,
-                                        "enter",
-                                        13,
-                                        $event.key,
-                                        "Enter"
-                                      )
-                                    ) {
-                                      return null
-                                    }
-                                    return _vm.connection($event)
-                                  }
-                                },
-                                model: {
-                                  value: _vm.user.password,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.user, "password", $$v)
-                                  },
-                                  expression: "user.password"
-                                }
-                              })
-                            ],
-                            1
+                  _c("v-text-field", {
+                    attrs: {
+                      label: "Email de connexion",
+                      name: "login",
+                      rules: _vm.emailRules,
+                      "prepend-icon": "mdi-account",
+                      type: "text"
+                    },
+                    model: {
+                      value: _vm.user.email,
+                      callback: function($$v) {
+                        _vm.$set(_vm.user, "email", $$v)
+                      },
+                      expression: "user.email"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: {
+                      id: "password",
+                      label: "Mot de passe",
+                      rules: _vm.pwdRules,
+                      name: "password",
+                      "prepend-icon": "mdi-lock",
+                      type: "password"
+                    },
+                    on: {
+                      keydown: function($event) {
+                        if (
+                          !$event.type.indexOf("key") &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
                           )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                outlined: "",
-                                color: "success",
-                                disabled: !_vm.valid
-                              },
-                              on: { click: _vm.connection }
-                            },
-                            [_vm._v("Connexion")]
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
+                        ) {
+                          return null
+                        }
+                        return _vm.connection($event)
+                      }
+                    },
+                    model: {
+                      value: _vm.user.password,
+                      callback: function($$v) {
+                        _vm.$set(_vm.user, "password", $$v)
+                      },
+                      expression: "user.password"
+                    }
+                  })
                 ],
                 1
               )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: {
+                    outlined: "",
+                    color: "success",
+                    disabled: !_vm.valid
+                  },
+                  on: { click: _vm.connection }
+                },
+                [_vm._v("Connexion")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "ml-7" }, [
+                _c("span", [_vm._v(_vm._s(_vm.erreur))])
+              ])
             ],
             1
           )
@@ -44975,6 +44984,8 @@ var render = function() {
       _c(
         "v-row",
         [
+          _c("v-col", { attrs: { cols: "12", md: "4" } }),
+          _vm._v(" "),
           _c(
             "v-col",
             { attrs: { cols: "12", md: "4" } },
@@ -44998,17 +45009,54 @@ var render = function() {
               ])
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "12", md: "4" } },
-            [_c("v-btn", [_vm._v("deconnexion")])],
-            1
           )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _vm.isChecked
+        ? _c(
+            "v-snackbar",
+            {
+              attrs: { dark: "", timeout: _vm.timeout },
+              scopedSlots: _vm._u(
+                [
+                  {
+                    key: "action",
+                    fn: function() {
+                      return [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: { text: "", color: "success" },
+                            on: {
+                              click: function($event) {
+                                _vm.snackbar = false
+                              }
+                            }
+                          },
+                          [_vm._v("Close")]
+                        )
+                      ]
+                    },
+                    proxy: true
+                  }
+                ],
+                null,
+                false,
+                273913390
+              ),
+              model: {
+                value: _vm.snackbar,
+                callback: function($$v) {
+                  _vm.snackbar = $$v
+                },
+                expression: "snackbar"
+              }
+            },
+            [_vm._v("\n    " + _vm._s(_vm.text) + "\n    ")]
+          )
+        : _vm._e()
     ],
     1
   )
@@ -105945,15 +105993,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*!***********************************************!*\
   !*** ./resources/js/dashboard/views/Home.vue ***!
   \***********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home_vue_vue_type_template_id_f57cbb4e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=f57cbb4e& */ "./resources/js/dashboard/views/Home.vue?vue&type=template&id=f57cbb4e&");
 /* harmony import */ var _home_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home.js?vue&type=script&lang=js& */ "./resources/js/dashboard/views/home.js?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _home_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _home_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -106001,7 +106048,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************************************!*\
   !*** ./resources/js/dashboard/views/home.js?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -9,15 +9,22 @@
     width="260"
     v-bind="$attrs"
   >
-
-  
     <v-divider class="mb-1" />
-
-    <v-divider class="mb-2" />
 
     <v-list>
       <v-list-item>
-        <v-btn v-if="isChecked" text to="/">Utilisateur</v-btn>
+        <v-btn v-if="isChecked" block to="/" text class='text-decoration-none' color="success">
+          <v-icon class="mr-auto">mdi-view-dashboard</v-icon>Utilisateur
+        </v-btn>
+      </v-list-item>
+      <v-list-item>
+        <v-btn v-if="isChecked" text block color="success"><v-icon class='mr-auto'>mdi-card-plus-outline</v-icon>Page 1</v-btn>
+      </v-list-item>
+      <v-list-item>
+        <v-btn v-if="isChecked" text block color="success"><v-icon class='mr-auto'>mdi-card-plus-outline</v-icon>Page2</v-btn>
+      </v-list-item>
+      <v-list-item>
+        <v-btn v-if="isChecked" text block color="success"><v-icon class='mr-auto'>mdi-card-plus-outline</v-icon>Page3</v-btn>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>

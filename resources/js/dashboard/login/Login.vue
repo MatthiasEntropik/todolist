@@ -1,11 +1,8 @@
 <template>
-  <v-content>
-    <v-container class="fill-height" fluid>
+    <v-container class="fill-height">
       <v-row align="center" justify="center">
-        <v-col cols="12" sm="8" md="4">
-          <v-card class="elevation-12">
-            <v-toolbar color="success" dark flat>
-              <v-toolbar-title>Indentifiez-vous</v-toolbar-title>
+            <v-toolbar dark flat>
+              <v-toolbar-title>Identifiez-vous</v-toolbar-title>
               <v-spacer />
             </v-toolbar>
             <v-card-text>
@@ -33,12 +30,12 @@
             </v-card-text>
             <v-card-actions>
               <v-btn outlined color="success" :disabled="!valid" @click="connection">Connexion</v-btn>
+              <div class="ml-7">
+                <span>{{erreur}}</span>
+              </div>
             </v-card-actions>
-          </v-card>
-        </v-col>
       </v-row>
     </v-container>
-  </v-content>
 </template>
 
 <script src='./login.js'>
