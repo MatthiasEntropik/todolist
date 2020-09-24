@@ -55,6 +55,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // Components
 
 
@@ -178,52 +207,200 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "v-toolbar-title",
-        { staticClass: "hidden-sm-and-down font-weight-light" },
-        [
-          _c("v-icon", { attrs: { color: "success" } }, [
-            _vm._v("mdi-alpha-d-box")
-          ]),
-          _vm._v("Distropic\n  ")
-        ],
-        1
-      ),
-      _vm._v(" "),
       _c("v-spacer"),
       _vm._v(" "),
-      !_vm.isChecked
-        ? _c(
-            "v-btn",
+      _c(
+        "v-menu",
+        {
+          attrs: {
+            bottom: "",
+            "offset-y": "",
+            origin: "center center",
+            transition: "scale-transition"
+          },
+          scopedSlots: _vm._u([
             {
-              staticClass: "ml-2 text-decoration-none",
-              attrs: { "min-width": "0", text: "", to: "/login" }
-            },
+              key: "activator",
+              fn: function(ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        {
+                          staticClass: "hidden-sm-and-down",
+                          attrs: { icon: "", color: "success", dark: "" }
+                        },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [
+                      _c("v-icon", { attrs: { color: "success" } }, [
+                        _vm._v("mdi-account-cog")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        {
+                          staticClass: "hidden-md-and-up",
+                          attrs: {
+                            icon: "",
+                            text: "",
+                            color: "success",
+                            dark: ""
+                          }
+                        },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [
+                      _c("v-icon", { attrs: { color: "success" } }, [
+                        _vm._v("mdi-account-cog")
+                      ])
+                    ],
+                    1
+                  )
+                ]
+              }
+            }
+          ])
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-list",
             [
-              _c("v-icon", { staticClass: "mr-5" }, [_vm._v("mdi-account")]),
-              _vm._v("Se connecter\n  ")
+              _vm.isChecked
+                ? _c(
+                    "v-list-item",
+                    [
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c(
+                            "v-list-item-title",
+                            { staticClass: "white--text" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticClass: "mr-4 text-decoration-none",
+                                  attrs: { to: "/profil", text: "", block: "" }
+                                },
+                                [
+                                  _c("v-icon", { staticClass: "mr-auto" }, [
+                                    _vm._v("mdi-account")
+                                  ]),
+                                  _vm._v("Profil\n            ")
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.isChecked
+                ? _c(
+                    "v-list-item",
+                    [
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c(
+                            "v-list-item-title",
+                            { staticClass: "white--text" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticClass: "text-decoration-none mr-4",
+                                  attrs: {
+                                    "min-width": "0",
+                                    text: "",
+                                    block: "",
+                                    to: "/login"
+                                  },
+                                  on: { click: _vm.logout }
+                                },
+                                [
+                                  _c("v-icon", { staticClass: "mr-auto" }, [
+                                    _vm._v("mdi-logout")
+                                  ]),
+                                  _vm._v("Logout\n            ")
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.isChecked
+                ? _c(
+                    "v-list-item",
+                    [
+                      _c(
+                        "v-list-item-title",
+                        { staticClass: "white--text" },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "text-decoration-none mr-4",
+                              attrs: {
+                                "min-width": "0",
+                                text: "",
+                                block: "",
+                                to: "/login"
+                              }
+                            },
+                            [
+                              _c("v-icon", { staticClass: "mr-auto" }, [
+                                _vm._v("mdi-login")
+                              ]),
+                              _vm._v("Se connecter\n          ")
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
             ],
             1
           )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isChecked
-        ? _c(
-            "v-btn",
-            {
-              staticClass: "text-decoration-none",
-              attrs: {
-                color: "success",
-                "min-width": "0",
-                icon: "",
-                to: "/login"
-              },
-              on: { click: _vm.logout }
-            },
-            [_c("v-icon", [_vm._v("mdi-logout")])],
-            1
-          )
-        : _vm._e()
+        ],
+        1
+      )
     ],
     1
   )

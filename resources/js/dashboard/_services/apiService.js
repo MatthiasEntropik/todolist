@@ -6,7 +6,7 @@ export const apiService = {
         return Axios({
             method: 'get',
             url: url,
-            params: data, 
+            params: data,
             headers: headers()
 
         })
@@ -15,7 +15,17 @@ export const apiService = {
         return Axios({
             method: 'post',
             url: url,
-            data: data, 
+            data: data,
+            headers: headers()
+
+        })
+    },
+
+    delete(url, data = {}) {
+        return Axios({
+            method: 'delete',
+            url: url,
+            params: data,
             headers: headers()
 
         })
@@ -28,9 +38,9 @@ function headers() {
         ? { Authorization: "Bearer " + currentUser.token }
         : {};
     return {
-            ...authHeader,
-            "Content-Type": "application/json"
-        }
-         
-    
+        ...authHeader,
+        "Content-Type": "application/json"
+    }
+
+
 }

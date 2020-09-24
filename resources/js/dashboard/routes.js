@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from './views/Home.vue';
+import Profil from './views/Profil.vue';
 import Login from './login/Login.vue';
+import Users from './views/Users.vue';
 import { Role } from './_helpers/role.js';
 import { authenticationService } from "./_services/authentication.service";
 
@@ -11,15 +12,21 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     routes: [{
-        path: '/',
-        name: 'home',
-        component: Home,
+        path: '/profil',
+        name: 'profil',
+        component: Profil,
         meta: { authorize: [Role.Admin] }
     },
     {
         path: '/login',
         name: 'login',
         component: Login,
+    },
+
+    {
+        path: '/users',
+        name: 'users',
+        component: Users,
     },
    
     ]

@@ -6,31 +6,60 @@
       <v-icon v-else>mdi-dots-vertical</v-icon>
     </v-btn>
 
-    <v-toolbar-title class="hidden-sm-and-down font-weight-light">
-      <v-icon color="success">mdi-alpha-d-box</v-icon>Distropic
-    </v-toolbar-title>
+   
 
     <v-spacer />
 
-    <v-btn class="ml-2 text-decoration-none" min-width="0" v-if="!isChecked" text to="/login">
-      <v-icon class="mr-5">mdi-account</v-icon>Se connecter
-    </v-btn>
-
-    <!-- <v-btn color="success" class="text-decoration-none ml-5" icon to="/" v-if="isChecked">
-      <v-icon>mdi-account</v-icon>
-    </v-btn> -->
-
-    <v-btn
-      color="success"
-      class="text-decoration-none"
-      min-width="0"
-      icon
-      to="/login"
-      v-if="isChecked"
-      @click="logout"
-    >
-      <v-icon>mdi-logout</v-icon>
-    </v-btn>
+    <v-menu bottom offset-y origin="center center" transition="scale-transition">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn icon color="success" dark v-bind="attrs" v-on="on" class="hidden-sm-and-down">
+          <v-icon color="success">mdi-account-cog</v-icon>
+        </v-btn>
+        <v-btn icon text color="success" dark v-bind="attrs" v-on="on" class="hidden-md-and-up">
+          <v-icon color="success">mdi-account-cog</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item v-if="isChecked">
+          <v-list-item-content>
+            <v-list-item-title class="white--text">
+              <v-btn class="mr-4 text-decoration-none" to="/profil" text block>
+                <v-icon class="mr-auto">mdi-account</v-icon>Profil
+              </v-btn>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="isChecked">
+          <v-list-item-content>
+            <v-list-item-title class="white--text">
+              <v-btn
+                class="text-decoration-none mr-4"
+                min-width="0"
+                text
+                block
+                to="/login"
+                @click="logout"
+              >
+                <v-icon class="mr-auto">mdi-logout</v-icon>Logout
+              </v-btn>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="!isChecked">
+          <v-list-item-title class="white--text">
+            <v-btn
+              class="text-decoration-none mr-4"
+              min-width="0"
+              text
+              block
+              to="/login"
+            >
+              <v-icon class="mr-auto">mdi-login</v-icon>Se connecter
+            </v-btn>
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 

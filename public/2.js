@@ -49,6 +49,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // Utilities
 
 
@@ -130,6 +139,21 @@ var render = function() {
       false
     ),
     [
+      _c(
+        "v-toolbar-title",
+        {
+          staticClass:
+            "hidden-sm-and-down font-weight-light text-center mt-5 white--text"
+        },
+        [
+          _c("v-icon", { attrs: { color: "success" } }, [
+            _vm._v("mdi-alpha-d-box")
+          ]),
+          _vm._v("Distropic\n  ")
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("v-divider", { staticClass: "mb-1" }),
       _vm._v(" "),
       _c(
@@ -143,13 +167,18 @@ var render = function() {
                     "v-btn",
                     {
                       staticClass: "text-decoration-none",
-                      attrs: { block: "", to: "/", text: "", color: "success" }
+                      attrs: {
+                        block: "",
+                        to: "/users",
+                        text: "",
+                        color: "success"
+                      }
                     },
                     [
-                      _c("v-icon", { staticClass: "mr-auto" }, [
+                      _c("v-icon", { staticClass: "white--text mr-auto" }, [
                         _vm._v("mdi-view-dashboard")
                       ]),
-                      _vm._v("Utilisateur\n      ")
+                      _vm._v("Utilisateurs\n      ")
                     ],
                     1
                   )
@@ -166,10 +195,10 @@ var render = function() {
                     "v-btn",
                     { attrs: { text: "", block: "", color: "success" } },
                     [
-                      _c("v-icon", { staticClass: "mr-auto" }, [
+                      _c("v-icon", { staticClass: "white--text mr-auto" }, [
                         _vm._v("mdi-card-plus-outline")
                       ]),
-                      _vm._v("Page 1")
+                      _vm._v("Page 1\n      ")
                     ],
                     1
                   )
@@ -186,10 +215,10 @@ var render = function() {
                     "v-btn",
                     { attrs: { text: "", block: "", color: "success" } },
                     [
-                      _c("v-icon", { staticClass: "mr-auto" }, [
+                      _c("v-icon", { staticClass: "white--text mr-auto" }, [
                         _vm._v("mdi-card-plus-outline")
                       ]),
-                      _vm._v("Page2")
+                      _vm._v("Page2\n      ")
                     ],
                     1
                   )
@@ -206,10 +235,10 @@ var render = function() {
                     "v-btn",
                     { attrs: { text: "", block: "", color: "success" } },
                     [
-                      _c("v-icon", { staticClass: "mr-auto" }, [
+                      _c("v-icon", { staticClass: "white--text mr-auto" }, [
                         _vm._v("mdi-card-plus-outline")
                       ]),
-                      _vm._v("Page3")
+                      _vm._v("Page3\n      ")
                     ],
                     1
                   )
