@@ -1,10 +1,12 @@
 import { apiService } from '../_services/apiService'
 import AddUpdate from '../components/users/AddUpdate'
-import SearchUsers from '../components/users/SearchUsers'
+import UsersCard from '../components/users/UsersCard'
+import UsersTab from '../components/users/UsersTab'
 export default {
     components: {
         AddUpdate,
-        SearchUsers
+        UsersCard,
+        UsersTab
     },
     data() {
         return {
@@ -14,6 +16,14 @@ export default {
             model: null,
             search: '',
             tab: null,
+            activeCard: true,
+            activeTab: false,
+            pagination: {
+                page: 1,
+                visible: 10,
+                pageCount: 0,
+            }
+
         }
     },
 
@@ -26,17 +36,19 @@ export default {
     },
 
     created() {
-        this.getUsers();
+        this.nextPageUsers(1);
     },
 
     methods: {
-        getUsers() {
-            apiService.get('/api/users').then(({ data }) => {
-                data.forEach(user => {
+        nextPageUsers(page) {
+            this.users = []
+            apiService.get('/api/users?page=' + page).then(({ data }) => {
+                data.data.forEach(user => {
                     this.users.push(user);
                 });
+                this.pagination.pageCount = data.last_page
             })
-        },
+        }
 
     },
 }

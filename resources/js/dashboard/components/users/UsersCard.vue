@@ -16,4 +16,4 @@
   </v-card>
 </template>
 
-<script src='./searchUsers.js' />
+<script src='./usersCard.js' />

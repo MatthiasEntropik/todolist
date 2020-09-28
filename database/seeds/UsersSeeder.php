@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -49,5 +50,6 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert(
             $array
         );
+        factory(User::class, 1000)->create();
     }
 }

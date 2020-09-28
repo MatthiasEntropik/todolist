@@ -74,7 +74,7 @@
               </v-btn>
             </v-col>
             <v-col cols="12" md="6" sm="6">
-              <v-btn class="red--text ml-2" text @click="drawerRight = !drawerRight">
+              <v-btn class="red--text" text @click="drawerRight = !drawerRight">
                 Annuler
               </v-btn>
             </v-col>

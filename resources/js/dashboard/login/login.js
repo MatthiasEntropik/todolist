@@ -22,10 +22,10 @@ export default {
     },
     created() {
         if (authenticationService.currentUserValue) {
-            return this.$router.push('/');
+            return this.$router.push('/users');
         }
 
-        this.returnUrl = this.$route.query.returnUrl || "/";
+        this.returnUrl = this.$route.query.returnUrl || "/users";
     },
     methods: {
         connection() {

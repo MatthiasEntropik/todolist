@@ -1,21 +1,44 @@
 <template>
   <v-app-bar id="app-bar" absolute app color="transparent" flat height="75">
-    <v-btn class="mr-3" elevation="1" fab small @click="setDrawer(!drawer)">
+    <v-btn
+      class="mr-3 success--text"
+      elevation="1"
+      small
+      @click="setDrawer(!drawer)"
+    >
       <v-icon v-if="value">mdi-view-quilt</v-icon>
 
-      <v-icon v-else>mdi-dots-vertical</v-icon>
+      <v-icon v-else>mdi-menu</v-icon>
     </v-btn>
-
-   
 
     <v-spacer />
 
-    <v-menu bottom offset-y origin="center center" transition="scale-transition">
+    <v-menu
+      bottom
+      offset-y
+      origin="center center"
+      transition="scale-transition"
+    >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn icon color="success" dark v-bind="attrs" v-on="on" class="hidden-sm-and-down">
+        <v-btn
+          icon
+          color="success"
+          dark
+          v-bind="attrs"
+          v-on="on"
+          class="hidden-sm-and-down"
+        >
           <v-icon color="success">mdi-account-cog</v-icon>
         </v-btn>
-        <v-btn icon text color="success" dark v-bind="attrs" v-on="on" class="hidden-md-and-up">
+        <v-btn
+          icon
+          text
+          color="success"
+          dark
+          v-bind="attrs"
+          v-on="on"
+          class="hidden-md-and-up"
+        >
           <v-icon color="success">mdi-account-cog</v-icon>
         </v-btn>
       </template>
@@ -32,16 +55,7 @@
         <v-list-item v-if="isChecked">
           <v-list-item-content>
             <v-list-item-title class="white--text">
-              <v-btn
-                class="text-decoration-none mr-4"
-                min-width="0"
-                text
-                block
-                to="/login"
-                @click="logout"
-              >
-                <v-icon class="mr-auto">mdi-logout</v-icon>Logout
-              </v-btn>
+              <validateOption :contentsValidate="contentsValidate" @isValidated="logout" />
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -68,6 +82,7 @@
 import { authenticationService } from "../../_services/authentication.service";
 import router from "../../routes";
 import { VHover, VListItem } from "vuetify/lib";
+import ValidateOption from "../base/ValidateOption";
 
 // Utilities
 import { mapState, mapMutations } from "vuex";
@@ -76,6 +91,7 @@ export default {
   name: "DashboardCoreAppBar",
 
   components: {
+    ValidateOption,
     AppBarItem: {
       render(h) {
         return h(VHover, {
@@ -114,6 +130,11 @@ export default {
 
   data: () => ({
     currentUser: null,
+    contentsValidate: {
+      iconValidate: "mdi-logout",
+      titleValidate: "logout",
+      textValidate: 'Êtes-vous sûr de vouloir vous déconnecter ?'
+    },
   }),
 
   created() {

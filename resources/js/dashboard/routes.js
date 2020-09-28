@@ -27,8 +27,9 @@ const router = new VueRouter({
         path: '/users',
         name: 'users',
         component: Users,
+        meta: { authorize: [Role.Admin] }
     },
-   
+
     ]
 })
 

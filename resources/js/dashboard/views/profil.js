@@ -1,31 +1,34 @@
 import { authenticationService } from "../_services/authentication.service";
-
+import BaseSnackbar from '../components/base/BaseSnackbar'
 export default {
-
+    components: {
+        BaseSnackbar
+    },
     data() {
         return {
             currentUser: null,
-            snackbar: false,
-            text: '',
-            timeout: 3000,
+            contentSnackbar: {
+                text: '',
+                color: 'success'
+            }
         }
     },
     computed: {
         isChecked() {
             return this.currentUser;
-          },
+        },
     },
     created() {
         authenticationService.currentUser.subscribe((x) => (this.currentUser = x));
         this.snackCheck();
+       
     },
 
     methods: {
         snackCheck() {
-            this.snackbar = true;
             if (!_.isEmpty(this.currentUser)) {
-             this.text = 'vous êtes connecter'
+                this.contentSnackbar.text = 'vous êtes connecter'
             }
-          }
+        }
     },
 }
