@@ -1,8 +1,10 @@
 import AddUpdate from './AddUpdate'
+import Delete from './Delete'
 
 export default {
     components: {
-        AddUpdate
+        AddUpdate,
+        Delete
     },
     props: {
         users: {

@@ -1,12 +1,17 @@
-import { apiService } from '../_services/apiService'
+import { userService } from '../_services/userService'
+
 import AddUpdate from '../components/users/AddUpdate'
 import UsersCard from '../components/users/UsersCard'
 import UsersTab from '../components/users/UsersTab'
+import BaseSnackbar from '../components/base/BaseSnackbar'
+import { EventBus } from '../eventBus'
+
 export default {
     components: {
         AddUpdate,
         UsersCard,
-        UsersTab
+        UsersTab,
+        BaseSnackbar
     },
     data() {
         return {
@@ -42,13 +47,12 @@ export default {
     methods: {
         nextPageUsers(page) {
             this.users = []
-            apiService.get('/api/users?page=' + page).then(({ data }) => {
-                data.data.forEach(user => {
-                    this.users.push(user);
-                });
-                this.pagination.pageCount = data.last_page
+            userService.nextPageUsers(page, this.users, this.pagination.pageCount)
+            EventBus.$on('updatePagination', (pagination) => {
+                this.pagination.pageCount = pagination
+
             })
-        }
+        },
 
     },
 }

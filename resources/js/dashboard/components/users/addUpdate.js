@@ -17,7 +17,6 @@ export default {
             drawerRight: null,
             email: '',
             name: '',
-            password: '',
             id: '',
             snackbar: false,
             text: '',

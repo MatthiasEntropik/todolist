@@ -1,22 +1,25 @@
+import { EventBus } from '../../eventBus'
 
 export default {
 
-    props: {
-        contentSnackbar: {
-            default: function () {
-                return {}
+    data() {
+        return {
+            timeout: 3000,
+            contentSnackbar: {
+                text: '',
+                color: 'success',
+                etat: false
             }
         }
     },
 
-    data() {
-        return {
-            snackbar: false,
-            timeout: 3000,
-        }
-    },
-
     created() {
-        this.snackbar = true
+        EventBus.$on('updateSnack', (contentSnackbar) => {
+            this.contentSnackbar.etat = contentSnackbar.etat
+            this.contentSnackbar.text = contentSnackbar.text
+            this.contentSnackbar.color = contentSnackbar.color
+        })
     }
+
+
 }

@@ -39,25 +39,25 @@ class UsersController extends Controller
             'email' => 'admin@gmail.com',
         ]));
 
-        // $user = '';
+        $user = '';
 
-        // if(isset($validator['id'])) {
-        //     $user = User::find($validator['id']);
-        // }
-        // if (!$user) {
-        //     $donneesBdd = new User;
-        //     $donneesBdd->password = bcrypt("password");
-        //     $donneesBdd->id_role = 2;
-        // } else {
-        //     $donneesBdd = $user;
-        // }
+        if(isset($validator['id'])) {
+            $user = User::find($validator['id']);
+        }
+        if (!$user) {
+            $donneesBdd = new User;
+            $donneesBdd->password = bcrypt("password");
+            $donneesBdd->id_role = 2;
+        } else {
+            $donneesBdd = $user;
+        }
 
-        // $donneesBdd->name = $validator['name'];
-        // $donneesBdd->email = $validator['email'];
+        $donneesBdd->name = $validator['name'];
+        $donneesBdd->email = $validator['email'];
         
-        // $donneesBdd->save();
+        $donneesBdd->save();
 
-        // return new UsersResource($donneesBdd);
+        return new UsersResource($donneesBdd);
     }
 
 

@@ -7,11 +7,12 @@
           <h6 class="display-1 mb-1 grey--text">Profil</h6>
 
           <h4 class="display-2 font-weight-light mb-3 black--text">
-            Jean {{ currentUser.name }}
+            {{ currentUser.name }}
           </h4>
 
           <p class="font-weight-light grey--text">{{ currentUser.email }}</p>
         </v-card-text>
+        <baseModal :contentModal="contentModal" />
       </v-col>
     </v-row>
     <baseSnackbar :contentSnackbar="contentSnackbar" v-if="isChecked" />

@@ -55,6 +55,7 @@
         circle
       ></v-pagination>
     </div>
+    <baseSnackbar/>
   </v-container>
 </template>
 
