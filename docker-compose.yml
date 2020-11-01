@@ -48,6 +48,6 @@ services:
     container_name: distropic-traefik
     command: --docker --docker.exposedbydefault=false
     ports: 
-      - "80:80"
+      - "81:80"
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock:ro
