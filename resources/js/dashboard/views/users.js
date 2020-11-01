@@ -1,4 +1,4 @@
-import { userService } from '../_services/userService'
+import { mapState } from "vuex";
 
 import AddUpdate from '../components/users/AddUpdate'
 import UsersCard from '../components/users/UsersCard'
@@ -15,7 +15,6 @@ export default {
     },
     data() {
         return {
-            users: [],
             isLoading: false,
             items: [],
             model: null,
@@ -23,16 +22,13 @@ export default {
             tab: null,
             activeCard: true,
             activeTab: false,
-            pagination: {
-                page: 1,
-                visible: 10,
-                pageCount: 0,
-            }
 
         }
     },
 
     computed: {
+        ...mapState(["page", "users", "pagination"]),
+
         filteredList() {
             return this.users.filter(user => {
                 return user.name.toLowerCase().includes(this.search.toLowerCase())
@@ -46,13 +42,8 @@ export default {
 
     methods: {
         nextPageUsers(page) {
-            this.users = []
-            userService.nextPageUsers(page, this.users, this.pagination.pageCount)
-            EventBus.$on('updatePagination', (pagination) => {
-                this.pagination.pageCount = pagination
-
-            })
-        },
-
+            EventBus.$emit('updatePage', page);
+            this.$store.dispatch('getPagesUsers');
+        }
     },
 }

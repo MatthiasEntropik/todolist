@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Accueil from './views/Accueil.vue';
 import Profil from './views/Profil.vue';
 import Login from './login/Login.vue';
 import Users from './views/Users.vue';
@@ -11,7 +12,13 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: 'history',
-    routes: [{
+    routes: [
+        {
+            path: '/',
+            name: 'accueil',
+            component: Accueil,
+        },
+        {
         path: '/profil',
         name: 'profil',
         component: Profil,

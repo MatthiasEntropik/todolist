@@ -45,8 +45,5 @@ export default {
             }
         },
 
-        incrementCounter() {
-            this.$store.dispatch('incrementAction', 1)
-        }
     },
 }
