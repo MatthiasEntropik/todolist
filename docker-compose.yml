@@ -25,7 +25,7 @@ services:
       - SERVICE_TAGS=dev
       - SERVICE_NAME=mysql
     ports: 
-      - 8306:3306
+      - 8307:3306
 
   nginx:
     image: nginx:alpine

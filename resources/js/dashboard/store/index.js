@@ -1,37 +1,44 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { EventBus } from '../eventBus';
+import { apiService } from '../_services/apiService'
 
 Vue.use(Vuex)
 
+let routeUser = '/api/users';
+
 export const store = new Vuex.Store({
+
     state: {
-        count: 0,
-        barColor: 'rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)',
-        barImage: 'https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-1.jpg',
+        barColor: '',
         drawer: null,
-      },
+        page: 0,
+        users: [],
+        pagination: {
+            visible: 10,
+            pageCount: 0,
+        }
+    },
 
     mutations: {
-        incrementCounter(state, payload) {
-            state.count += payload
-        },
-        SET_BAR_IMAGE (state, payload) {
-          state.barImage = payload
-        },
         SET_DRAWER (state, payload) {
           state.drawer = payload
         },
       },
 
     actions: {
-        incrementAction(context, payload) {
-            context.commit('incrementCounter', payload)
-        }
-    },
+        getPagesUsers({ state }) {
 
-    getters: {
-        counter(state) {
-            return state.count
+            state.users = [];
+            EventBus.$on('updatePage', (page) => {
+                state.page = page;
+            })
+            apiService.get(routeUser + '?page=' + state.page).then(({ data }) => {
+                data.data.forEach(user => {
+                    state.users.push(user);
+                });
+                state.pagination.pageCount = data.last_page
+            })
         }
     }
 })
