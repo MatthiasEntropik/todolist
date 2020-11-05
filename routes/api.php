@@ -25,3 +25,4 @@ Route::middleware('auth:api')->prefix('users')->group(function () {
 
 Route::post('login', 'AuthController@login');
 Route::get('logout', 'AuthController@logout');
+

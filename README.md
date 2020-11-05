@@ -12,10 +12,9 @@ Pour mettre en place le projet, vous devez disposer sur votre appareil de Docker
 
 Pour installer correctement distropic il vous faut entrer les lignes de commandes suivant dans le terminal du projet :
 
-* composer install
-
 * docker-compose build
 * docker-compose up
+* docker-compose exec app composer install
 * docker-compose run node npm install
 
 /*Pour la base de donnée*/
@@ -24,7 +23,9 @@ Pour installer correctement distropic il vous faut entrer les lignes de commande
 * docker-compose exec app php artisan:migrate --seed
 * docker-compose exec app php artisan passport:install
 
-/*Info supplémentaire*/
+Utiliser Workbench et créer une connexion vers `localhost:8306`
+
+## Info supplémentaire
 
 Parametrer votre connexion mysql ainsi sur workbench :
 * Hostname: localhost 

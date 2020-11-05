@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/')->group(function () {
-    Route::get('/{any}', 'AdminController@index')->where('any', '.*');
-});
+Route::get('{any}', 'AdminController@index')->where('any', '.*');
+
+Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::post('/password/reset', 'ResetPasswordController@reset')->name('password.reset');
