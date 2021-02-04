@@ -23,13 +23,13 @@ Pour installer correctement distropic il vous faut entrer les lignes de commande
 * docker-compose exec app php artisan:migrate --seed
 * docker-compose exec app php artisan passport:install
 
-Utiliser Workbench et créer une connexion vers `localhost:8306`
+Utiliser Workbench et créer une connexion vers `localhost:8307`
 
 ## Info supplémentaire
 
 Parametrer votre connexion mysql ainsi sur workbench :
 * Hostname: localhost 
-* Port: 8306
+* Port: 8307
 * Username: root
 * Password: root
 

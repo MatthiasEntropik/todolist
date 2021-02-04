@@ -44,7 +44,7 @@ services:
       - .:/home/node/app/frontend
 
   traefik: 
-    image: traefik:1.7
+    image: traefik:1.7 
     container_name: distropic-traefik
     command: --docker --docker.exposedbydefault=false
     ports: 

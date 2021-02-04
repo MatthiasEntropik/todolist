@@ -31,12 +31,17 @@ function login(user) {
         requestOptions.post(user)
     )
         .then(handleResponse)
-        .then(({ data }) => {
+        .then(data => {
+            if(data.message == undefined) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem("currentUser", JSON.stringify(data));
-            currentUserSubject.next(data);
+            localStorage.setItem("currentUser", JSON.stringify(data.data));
+            currentUserSubject.next(data.data);
+            return data.data;
 
-            return data;
+
+        } else {
+            return data.message;
+        }
         });
 }
 

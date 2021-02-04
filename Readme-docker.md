@@ -189,7 +189,7 @@ networks:
 /* lancer la compilation npm */
 * docker-compose run node npm <cmd>
 
-/* accédez au nom de domaine ou à l'adresse IP de votre serveur sur le port 8000 */
+/* accédez au nom de domaine ou à l'adresse IP de votre serveur sur le port 8001 */
 * http://distropic.localhost:8001/
 
 # Information supplémentaire 

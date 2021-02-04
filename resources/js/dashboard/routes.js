@@ -5,8 +5,8 @@ import Profil from './views/Profil.vue';
 import Login from './login/Login.vue';
 import Users from './views/Users.vue';
 import { Role } from './_helpers/role.js';
-import PasswordEmail from './components/auth/password/Email.vue';
-import PasswordReset from './components/auth/password/Reset.vue';
+import ForgotPassword from './login/ForgotPassword.vue';
+import ResetPasswordForm from './login/ResetPasswordForm.vue'
 import { authenticationService } from "./_services/authentication.service";
 
 
@@ -32,17 +32,22 @@ const router = new VueRouter({
         component: Login,
     },
 
-    {
-        path: '/password/reset/',
-        name: 'password-email',
-        component: PasswordEmail,
-    },
-
-    {
-        path: '/password/reset/:token',
-        name: 'password-reset',
-        component: PasswordReset,
-    },
+    { 
+        path: '/reset-password', 
+        name: 'reset-password', 
+        component: ForgotPassword, 
+        meta: { 
+          auth:false 
+        } 
+      },
+      { 
+        path: '/reset-password/:token', 
+        name: 'reset-password-form', 
+        component: ResetPasswordForm, 
+        meta: { 
+          auth:false 
+        } 
+      },
 
     {
         path: '/users',

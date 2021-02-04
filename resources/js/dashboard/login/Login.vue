@@ -32,8 +32,8 @@
         <v-btn outlined color="success" :disabled="!valid" @click="connection"
           >Connexion</v-btn
         >
-        <v-btn outlined color="error" :disabled="valid" to="/password/reset/"
-          >Forgot Password</v-btn
+        <v-btn outlined color="error" :disabled="valid" to="/reset-password"
+          >Mot de passe oublié</v-btn
         >
         <div class="ml-7">
           <span>{{ erreur }}</span>
