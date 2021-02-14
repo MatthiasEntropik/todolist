@@ -19,7 +19,5 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             ListSeeder::class
         ]);
-
-        User::factory(50)->create();
     }
 }
