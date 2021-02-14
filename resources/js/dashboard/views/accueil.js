@@ -71,11 +71,9 @@ export default {
                     `
                 }
             }).then(({ data }) => {
-                console.log(data)
             });
         },
         addTask() {
-            console.log(this.date)
             axios({
                 url: '/graphql',
                 method: 'post',
@@ -101,12 +99,15 @@ export default {
             });
         },
         updateInputs(data) {
-            this.id = data.id
-            this.tache = data.task
-            this.description = data.description
-            this.selectPriorite = data['priorite']
-            this.date = data.deadline
-            console.log(data)
+            if (data) {
+
+                this.id = data.id
+                this.tache = data.task
+                this.description = data.description
+                this.selectPriorite = data['priorite']
+                this.date = data.deadline
+
+            }
         },
         updateTaskInfo() {
             axios({

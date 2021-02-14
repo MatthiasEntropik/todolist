@@ -10,7 +10,7 @@
               fab
               v-bind="attrs"
               v-on="on"
-              @click="updateInputs(task)"
+              @click="updateInputs()"
               ><v-icon>mdi-plus</v-icon></v-btn
             >
           </template>
