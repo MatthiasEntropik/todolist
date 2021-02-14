@@ -4,7 +4,6 @@ import { mapState, mapMutations, mapActions } from "vuex";
 export default {
     data() {
         return {
-            userId: null,
             list: null,
             tache: '',
             description: '',
@@ -31,7 +30,6 @@ export default {
 
     },
     created() {
-        this.userId = JSON.parse(localStorage.getItem('currentUser')).id
         this.getDatas();
     },
     methods: {
