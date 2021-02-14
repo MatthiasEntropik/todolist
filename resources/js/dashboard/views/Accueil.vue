@@ -4,7 +4,13 @@
       <v-col cols="4">
         <v-dialog transition="dialog-bottom-transition">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" icon fab v-bind="attrs" v-on="on"
+            <v-btn
+              color="primary"
+              icon
+              fab
+              v-bind="attrs"
+              v-on="on"
+              @click="updateInputs(task)"
               ><v-icon>mdi-plus</v-icon></v-btn
             >
           </template>
