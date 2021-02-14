@@ -149,7 +149,7 @@ var render = function() {
           _c("v-icon", { attrs: { color: "success" } }, [
             _vm._v("mdi-alpha-d-box")
           ]),
-          _vm._v("Distropic\n  ")
+          _vm._v("todolist\n  ")
         ],
         1
       ),

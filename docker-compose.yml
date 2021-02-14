@@ -6,7 +6,7 @@ services:
         user: benj
         uid: 1000
       context: .docker/php
-    container_name: distropic-app
+    container_name: todolist-app
     working_dir: /var/www/
     volumes:
       - ./:/var/www
@@ -16,7 +16,7 @@ services:
 
   db:
     image: mysql:5.7
-    container_name: distropic-db
+    container_name: todolist-db
     environment:
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
@@ -29,7 +29,7 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: distropic-nginx
+    container_name: todolist-nginx
     ports:
       - 8001:80
     volumes:
@@ -39,13 +39,13 @@ services:
   node:
     build:
       context: .docker/node
-    container_name: distropic-node
+    container_name: todolist-node
     volumes: 
       - .:/home/node/app/frontend
 
   traefik: 
     image: traefik:1.7 
-    container_name: distropic-traefik
+    container_name: todolist-traefik
     command: --docker --docker.exposedbydefault=false
     ports: 
       - "81:80"

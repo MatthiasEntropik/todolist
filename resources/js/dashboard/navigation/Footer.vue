@@ -1,6 +1,6 @@
 <template>
       <v-footer class="adminFooter deep-purple ">
-        <div class="adminFooterTexte">© Distropic</div>
+        <div class="adminFooterTexte">© todolist</div>
       </v-footer>
 </template>
 

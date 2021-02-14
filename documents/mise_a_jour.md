@@ -1,4 +1,4 @@
-# AMÉLIORER DISTROPIC 
+# AMÉLIORER todolist 
 
 - RAJOUTER LES MIDDLEWARES POUR VÉRIFIER LES ROLES 
 
@@ -46,7 +46,7 @@ Realiser des composants vue pour npm : https://fr.vuejs.org/v2/cookbook/packagin
 
 ### AMELIORER L'INTERFACE
 
-    Depuis les dernières modifications de distropic, il y a eu du nouveau du côté de vuetify et je pense que l'on pourrai rajouter ou modifier certain composant vuetify pour améliorer l'ux.
+    Depuis les dernières modifications de todolist, il y a eu du nouveau du côté de vuetify et je pense que l'on pourrai rajouter ou modifier certain composant vuetify pour améliorer l'ux.
 
 ### AMÉLIORER LES DOCKERFILES ET LE DOCKER-COMPOSE
 

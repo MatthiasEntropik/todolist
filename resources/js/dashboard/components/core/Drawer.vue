@@ -10,7 +10,7 @@
     v-bind="$attrs"
   >
     <v-toolbar-title class="hidden-sm-and-down font-weight-light text-center mt-5 white--text">
-      <v-icon color="success">mdi-alpha-d-box</v-icon>Distropic
+      <v-icon color="success">mdi-alpha-d-box</v-icon>todolist
     </v-toolbar-title>
     <v-divider class="mb-1" />
 

@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://distropic.localhost'),
+    'url' => env('APP_URL', 'http://todolist.localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 
