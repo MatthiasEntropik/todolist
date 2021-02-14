@@ -1,0 +1,42 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-01-01 13:00:00`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+type Query {
+    users: [User!]! @all
+    user(id: Int! @eq): User @find
+    lists(orderBy: _ @orderBy(columns: ["deadline"])): [Liste!]! @all
+    list(id: Int! @eq) : Liste @find
+    listFilterPriorite(priorite: String @where(operator: "=")) : [Liste!] @all
+
+}
+
+type Mutation {
+ updateTodo(id: Int!, completed: Boolean, task: String, description:String,priorite:String, deadline: String): Liste @update
+ createTodo(completed: Boolean, task: String, description:String, user_id:Int!, priorite:String, deadline: String): Liste @create
+ }
+
+type User {
+    id: ID!
+    name: String!
+    time: String!
+    login_fails: String!
+    email: String!
+    email_verified_at: String!
+    remember_token: String!
+    password: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    lists: [Liste!]! @hasMany
+
+ }
+
+ type Liste {
+    id: ID!
+    task: String!
+    completed: Boolean!
+    description: String!
+    priorite: String!
+    deadline: String!
+}

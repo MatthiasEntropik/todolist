@@ -12,7 +12,7 @@ services:
       - ./:/var/www
     labels: 
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:distropic.localhost"
+      - "traefik.frontend.rule=Host:todolist.localhost"
 
   db:
     image: mysql:5.7

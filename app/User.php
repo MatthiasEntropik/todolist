@@ -21,7 +21,8 @@ class User extends Authenticatable
         'username', 'email', 'password',
     ];
 
-    public static function newFactory() {
+    public static function newFactory()
+    {
         return UserFactory::new();
     }
 
@@ -43,7 +44,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    function role(){
-        return $this->belongsTo(RolesModel::class,'id_role');
+    function role()
+    {
+        return $this->belongsTo(RolesModel::class, 'id_role');
+    }
+    public function lists()
+    {
+        return $this->hasMany(Liste::class);
     }
 }

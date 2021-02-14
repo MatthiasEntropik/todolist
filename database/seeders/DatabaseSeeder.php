@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\User;
@@ -16,9 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesSeeder::class,
             UsersSeeder::class,
-            ]);
+            ListSeeder::class
+        ]);
 
         User::factory(50)->create();
-
     }
 }
