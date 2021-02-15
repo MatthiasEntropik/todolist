@@ -2,7 +2,7 @@
 
 ## À propos todolist
 
-todolist est un boilerplate mettant en place une architecture couplant le framework Laravel au framework Vuejs avec un système d'authentification.
+todolist est une application permettant de noter des taches
 
 ## Processus de mise en marche 
 
